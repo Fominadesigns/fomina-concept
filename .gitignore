@@ -1,0 +1,9 @@
+# Внутрішні документи й нотатки
+content/
+*-brief.md
+
+# Службове
+.claude/
+.DS_Store
+Thumbs.db
+node_modules/
