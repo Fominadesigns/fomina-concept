@@ -9,23 +9,25 @@
 
   /* --- вкладки за нішами --------------------------------------------------- */
 
-  // Тексти й підписи заглушок для кожної ніші. Коли зʼявляться справжні
-  // зображення — додати сюди поле src і підставляти його в .shot.
+  // Текст і зображення для кожної ніші.
   var NICHES = {
     consulting: {
       title: 'Коли послугу<br>важко пояснити',
       lead: 'Сайт має пояснити те, що ви щоразу пояснюєте голосом. Структура під заявки, а не набір гарних екранів.',
-      shot: 'Зображення<br>консалтинг'
+      img: 'images/niche-proto.webp',
+      alt: 'Паперові прототипи сторінок із жовтим маркером'
     },
     medical: {
       title: 'Коли обирають<br>за довірою',
       lead: 'До клініки йдуть не за списком послуг, а за відчуттям, що тут не нашкодять. Сайт це відчуття або створює, або руйнує.',
-      shot: 'Зображення<br>медицина'
+      img: 'images/niche-paper.webp',
+      alt: 'Макрознімок стосу паперу зі світлим зрізом'
     },
     interior: {
       title: 'Коли сайт<br>бачать першим',
       lead: 'Ваші проєкти коштують сотні тисяч. Сайт не має виглядати дешевше за них — інакше розмова про бюджет починається з мінуса.',
-      shot: 'Зображення<br>інтерʼєр'
+      img: 'images/niche-arch.webp',
+      alt: 'Бетонна будівля знизу з жовтим променем світла'
     }
   };
 
@@ -53,8 +55,8 @@
         var swap = function () {
           heroTitle.innerHTML = data.title;
           heroLead.textContent = data.lead;
-          var label = heroShot.querySelector('.shot__label');
-          if (label) { label.innerHTML = data.shot; }
+          var img = document.getElementById('heroImg');
+          if (img) { img.src = data.img; img.alt = data.alt; }
           hero.classList.remove('is-swapping');
         };
 

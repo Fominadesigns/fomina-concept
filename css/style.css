@@ -115,16 +115,11 @@ h3{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,1.5vw,1.35r
 .hero.is-swapping .hero__lead,
 .hero.is-swapping .shot{opacity:0}
 
-/* заглушка під зображення */
 .shot{
-  width:min(100%,420px);aspect-ratio:3/4;border-radius:14px;
-  border:1px dashed var(--cream-14);
-  display:grid;place-content:center;text-align:center;
-  color:var(--cream-40);background:rgba(245,245,240,.02);
+  width:min(100%,420px);aspect-ratio:3/4;border-radius:14px;overflow:hidden;
   transition:opacity .4s ease;
 }
-.shot img{width:100%;height:100%;object-fit:cover;border-radius:13px}
-.shot__label{line-height:2}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* --- вкладки за нішами ----------------------------------------------------- */
 .tabs{
@@ -202,6 +197,26 @@ h3{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,1.5vw,1.35r
 .case__desc{color:var(--cream-60);font-size:15px;max-width:60ch}
 .case__go{color:var(--cream-40);white-space:nowrap;transition:color .3s}
 .case:hover .case__go{color:var(--accent)}
+
+/* Прев'ю кейсу нахилене в просторі. Це пункт 10 зі списку ідей:
+   замість того щоб малювати «сайти під кутом», нахиляємо справжні
+   скріншоти — вони лишаються чіткими на будь-якому екрані. */
+.case{position:relative}
+.case__shot{
+  position:absolute;right:clamp(120px,14vw,220px);top:50%;
+  width:clamp(180px,17vw,260px);
+  border-radius:8px;overflow:hidden;pointer-events:none;
+  opacity:0;
+  transform:translate3d(0,-50%,0) perspective(900px) rotateY(22deg) rotateX(6deg) scale(.9);
+  box-shadow:-20px 30px 60px rgba(0,0,0,.6);
+  transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.3,1);
+}
+.case:hover .case__shot{
+  opacity:1;
+  transform:translate3d(0,-50%,0) perspective(900px) rotateY(14deg) rotateX(3deg) scale(1);
+}
+.case__shot img{width:100%;display:block}
+@media (max-width:1100px){.case__shot{display:none}}
 
 /* --- ціна ------------------------------------------------------------------ */
 .price__lead{color:var(--cream-60);max-width:52ch;margin:-24px 0 clamp(36px,5vw,60px)}
